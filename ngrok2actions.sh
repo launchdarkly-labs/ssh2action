@@ -48,7 +48,7 @@ set_up_authorized_keys() {
 
 start_tmate() {
   echo -e "${INFO} Start tmate..."
-  exec tmate -a "$HOME/.ssh/authorized_keys" -S "$SOCKET_FILE" -F >"$LOG_FILE" 2>&1 &
+  exec tmate -a "$HOME/.ssh/authorized_keys" -S "$SOCKET_FILE" -F | tee "$LOG_FILE" 2>&1 &
   TMATE_PID="$!"
 
   sleep 1
